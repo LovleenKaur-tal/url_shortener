@@ -6,7 +6,7 @@ services:
     build:
       context: ./url_shortener/url_shortener  # Path to your Django backend folder
     container_name: django_backend
-    command: python manage.py runserver 0.0.0.0:8000
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./url_shortener/url_shortener:/usr/src/app
     ports:
