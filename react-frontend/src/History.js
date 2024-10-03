@@ -24,7 +24,7 @@ function History({ onDelete, onRename, onChangeExpiry }) {
     // Fetch history from backend when the component mounts
     const fetchHistory = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/urls/");  // Replace with your backend URL
+        const response = await axios.get("http://localhost:8000/api/urls/");  
         console.log(response.data);  // Log the response to verify it
         setHistory(response.data);
         setLoading(false);
