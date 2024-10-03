@@ -1,0 +1,155 @@
+/* General styling for the entire app */
+.App {
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Form styling for input and button */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 12px;
+  width: 100%;
+  max-width: 400px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Styling for the result section where the shortened URL and QR code are displayed */
+.result {
+  margin-top: 20px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.result a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.result a:hover {
+  text-decoration: underline;
+}
+
+/* QR code container */
+.qr-code {
+  margin-top: 20px;
+}
+
+
+
+/* Error message styling */
+.error {
+  color: red;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* Toast notification styling */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 10;
+}
+
+/* General nav-bar styling */
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px; /* Padding around the links */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 5px;
+  margin-bottom: 20px; /* Space below the navbar */
+}
+
+/* Styling for individual links */
+.nav-bar a {
+  color: black; /* White text color */
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Increase font size */
+  font-weight: bold; /* Bold text */
+  margin: 0 15px; /* Spacing between links */
+  padding: 8px 15px; /* Padding for better clickability */
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for links */
+.nav-bar a:hover {
+  background-color: #007bff; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Active link styling (can be used with active class or logic) */
+.nav-bar a.active {
+  background-color: #007bff; /* Even darker blue for the active page */
+}
+
+/* Responsive design: stack links vertically on small screens */
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column; /* Stack the links vertically */
+    align-items: center; /* Center the links */
+  }
+
+  .nav-bar a {
+    margin: 10px 0; /* Space between links */
+    width: 100%; /* Full width for the links */
+    text-align: center; /* Center the text */
+  }
+}
+

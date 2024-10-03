@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # Django Backend
+  backend:
+    build:
+      context: ./url_shortener/url_shortener  # Path to your Django backend folder
+    container_name: django_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./url_shortener/url_shortener:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DEBUG=True
+      - DB_HOST=db
+      - DB_NAME=url_shortener_db
+      - DB_USER=custom_user
+      - DB_PASSWORD=custom_
+    networks:
+      - backend_network
+
+  # PostgreSQL Database
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: url_shortener_db
+      POSTGRES_USER: custom_user
+      POSTGRES_PASSWORD: custom
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend_network
+      
+  # Redis Cache
+  redis:
+    image: "redis:6.0-alpine"
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
+    networks:
+      - backend_network
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./react-frontend  # Path to your React frontend folder
+    container_name: react_frontend
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - frontend_network
+
+networks:
+  backend_network:
+  frontend_network:
+
+volumes:
+  postgres_data:
